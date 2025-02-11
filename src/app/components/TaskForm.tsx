@@ -36,7 +36,7 @@ export default function TaskForm({groupId}: TaskFormProps) {
             <input type="text" 
                 value={title} 
                 onChange={e => setTitle(e.target.value)}
-                placeholder="Add a new task"
+                placeholder="Add a new task here"
             />
             <button type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"

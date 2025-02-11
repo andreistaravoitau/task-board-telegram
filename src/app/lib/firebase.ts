@@ -13,6 +13,8 @@ const firebaseConfig = {
     appId: process.env.FIREBASE_APP_ID
 };
 
+console.log('Firebase Config:', firebaseConfig);
+
 let app;
 let db: Firestore;
 
