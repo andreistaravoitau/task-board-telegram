@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import Image from "next/image";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
-import { retrieveLaunchParams  } from '@telegram-apps/sdk-react';
+import { useLaunchParams } from '@telegram-apps/sdk-react';
 import dynamic from 'next/dynamic';
 
 const TaskBoardClient = dynamic(() => Promise.resolve(TaskBoard),
@@ -15,13 +15,13 @@ function TaskBoard() {
   const [groupId, setGroupId] = useState<string |null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const launchParams = retrieveLaunchParams ();
+  const launchParams = useLaunchParams();
 
   useEffect(() => {
     const initializeComponent = async () => {
       try {
         if (launchParams?.startParam) {
-          const encodedGroupId = launchParams.startParam as string;
+          const encodedGroupId = launchParams.startParam;
           try {
             const decodedGroupId = atob(encodedGroupId);
             console.log('Decoded Group ID:', decodedGroupId);
