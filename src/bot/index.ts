@@ -21,10 +21,18 @@ bot.command('help', (ctx: any) => {
 });
 
 bot.command('webapp', (ctx: any) => {
+    const chatId = ctx.chat.id;
+    const encodedGroupId = Buffer.from(chatId.toString()).toString('base64');
+
+    console.log('Chat ID:', chatId);
+    console.log('Encoded Group ID:', encodedGroupId);
+
     ctx.reply('Open the Mini App:', {
         reply_markup: {
             inline_keyboard: [
-                [{ text: 'Open', url: WEBAPP_URL }]
+                [
+                    { text: 'Open', url: `${WEBAPP_URL}?startapp=${encodedGroupId}`}
+                ]
             ]
         }
     });
